@@ -13,7 +13,7 @@ const WorkforceTraining = () => {
       
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-12 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent pb-2">
             We're Not Training Enough Healthcare Workers
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
