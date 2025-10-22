@@ -25,10 +25,10 @@ export const TrainingGrowthRateChart = () => {
       </p>
       <ChartContainer config={chartConfig} className="h-[350px]">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={growthRatesData} layout="vertical" margin={{ left: 180, right: 20 }}>
+          <BarChart data={growthRatesData} layout="vertical" margin={{ left: 10, right: 20, top: 5, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" domain={[0, 5]} tickFormatter={(value) => `${value}%`} />
-            <YAxis dataKey="profession" type="category" width={180} />
+            <YAxis dataKey="profession" type="category" width={160} />
             <Tooltip 
               formatter={(value: number) => `${value}%`}
               contentStyle={{ 
