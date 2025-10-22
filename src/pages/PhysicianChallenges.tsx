@@ -21,7 +21,7 @@ const PhysicianChallenges = () => {
         </div>
 
         {/* EMR Definition */}
-        <div className="max-w-2xl mx-auto mb-12 p-4 bg-muted/50 rounded-lg border">
+        <div className="max-w-2xl mx-auto mb-12 p-4 bg-muted/50 rounded-lg border -mt-4">
           <p className="text-sm text-center">
             <strong>EMR</strong> (Electronic Medical Record) is the digital system physicians use to document patient encounters, 
             order tests, prescribe medications, and manage clinical information.
