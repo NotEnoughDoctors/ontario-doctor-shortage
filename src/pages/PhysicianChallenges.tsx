@@ -11,12 +11,20 @@ const PhysicianChallenges = () => {
       
       <main className="container mx-auto px-4 py-12">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Why Existing Doctors Can't Take More Patients
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Administrative burden, outdated tools, and burnout limit physician capacity
+          </p>
+        </div>
+
+        {/* EMR Definition */}
+        <div className="max-w-2xl mx-auto mb-12 p-4 bg-muted/50 rounded-lg border">
+          <p className="text-sm text-center">
+            <strong>EMR</strong> (Electronic Medical Record) is the digital system physicians use to document patient encounters, 
+            order tests, prescribe medications, and manage clinical information.
           </p>
         </div>
 
