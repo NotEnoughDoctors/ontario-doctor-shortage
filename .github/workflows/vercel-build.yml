@@ -1,0 +1,38 @@
+name: Vercel Deployment on Push to Main from Dev
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed  # Only triggers when the PR is merged (closed)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository to get the source code
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Set up Node.js (required by Vercel)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Deploy to Vercel (only if the PR was merged from dev)
+      - name: Deploy to Vercel
+        if: github.event.pull_request.head.ref == 'dev' && github.event.pull_request.merged == true
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm install -g vercel
+          vercel --prod --confirm
