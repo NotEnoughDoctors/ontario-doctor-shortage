@@ -28,6 +28,14 @@ export const Navigation = () => {
                 Physician Workload
               </Button>
             </Link>
+            <Link to="/workforce-training">
+              <Button 
+                variant={location.pathname === "/workforce-training" ? "default" : "ghost"}
+                size="sm"
+              >
+                Workforce Training
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
