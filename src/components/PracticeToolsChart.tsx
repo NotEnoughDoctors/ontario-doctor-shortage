@@ -17,19 +17,19 @@ export const PracticeToolsChart = () => {
       <p className="text-muted-foreground mb-6">
         Most physicians lack efficiency tools that could increase capacity
       </p>
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart data={practiceToolsData} layout="horizontal">
+      <ResponsiveContainer width="100%" height={450}>
+        <BarChart data={practiceToolsData} layout="vertical" margin={{ left: 20 }}>
           <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
           <XAxis 
             type="number"
             className="text-xs"
-            label={{ value: 'Adoption Rate (%)', position: 'insideBottom', offset: -5 }}
+            domain={[0, 100]}
           />
           <YAxis 
             type="category"
             dataKey="tool"
             className="text-xs"
-            width={150}
+            width={180}
           />
           <Tooltip 
             contentStyle={{ 
@@ -37,8 +37,9 @@ export const PracticeToolsChart = () => {
               border: '1px solid hsl(var(--border))',
               borderRadius: '0.5rem'
             }}
+            formatter={(value: number) => `${value}%`}
           />
-          <Bar dataKey="usage" name="Adoption Rate %" fill="hsl(var(--chart-3))" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="usage" name="Adoption Rate" fill="hsl(var(--chart-3))" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
       <div className="mt-4 p-4 bg-muted rounded-lg">
