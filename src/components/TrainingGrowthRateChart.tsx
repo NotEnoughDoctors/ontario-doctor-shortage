@@ -18,17 +18,17 @@ export const TrainingGrowthRateChart = () => {
   };
 
   return (
-    <Card className="p-6">
+    <Card className="p-6 overflow-hidden">
       <h3 className="text-lg font-semibold mb-2">Projected Workforce Supply Growth Rates (2022-2034)</h3>
       <p className="text-sm text-muted-foreground mb-6">
         Average annual growth rates are far too slow to address the current shortages. Most professions growing at less than 2% annually.
       </p>
-      <ChartContainer config={chartConfig} className="h-[350px]">
+      <ChartContainer config={chartConfig} className="h-[350px] w-full overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={growthRatesData} layout="vertical" margin={{ left: 10, right: 20, top: 5, bottom: 5 }}>
+          <BarChart data={growthRatesData} layout="vertical" margin={{ left: 0, right: 8, top: 8, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" domain={[0, 5]} tickFormatter={(value) => `${value}%`} />
-            <YAxis dataKey="profession" type="category" width={160} />
+            <YAxis dataKey="profession" type="category" width={140} />
             <Tooltip 
               formatter={(value: number) => `${value}%`}
               contentStyle={{ 
