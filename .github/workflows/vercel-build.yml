@@ -1,14 +1,11 @@
 name: Vercel Deployment on Push to Main from Dev
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-    # You can specify the condition to check if the source is the dev branch
-    # This can be done by checking the commit messages or using a custom condition
-    # but the simplest approach is to look for changes coming from dev
-    # We can match the dev branch being merged to main
-    # GitHub doesn't natively track which branch initiated the push, so let's handle this manually
+    types:
+      - closed  # Only triggers when the PR is merged (closed)
 
 jobs:
   deploy:
@@ -29,8 +26,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Deploy to Vercel
+      # Deploy to Vercel (only if the PR was merged from dev)
       - name: Deploy to Vercel
+        if: github.event.pull_request.head.ref == 'dev' && github.event.pull_request.merged == true
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
