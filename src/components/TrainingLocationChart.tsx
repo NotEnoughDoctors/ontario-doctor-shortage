@@ -16,17 +16,17 @@ export const TrainingLocationChart = () => {
   };
 
   return (
-    <Card className="p-6">
+    <Card className="p-6 overflow-hidden">
       <h3 className="text-lg font-semibold mb-2">Training Programs by Location</h3>
       <p className="text-sm text-muted-foreground mb-6">
         Most healthcare training programs are concentrated in urban areas, limiting rural workforce development
       </p>
-      <ChartContainer config={chartConfig} className="h-[400px]">
+      <ChartContainer config={chartConfig} className="h-[400px] w-full overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={trainingLocationData} layout="vertical" margin={{ left: 180, right: 20 }}>
+          <BarChart data={trainingLocationData} layout="vertical" margin={{ left: 0, right: 8, top: 8, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" />
-            <YAxis dataKey="profession" type="category" width={180} />
+            <YAxis dataKey="profession" type="category" width={120} className="text-xs" />
             <Tooltip 
               contentStyle={{ 
                 backgroundColor: 'hsl(var(--background))',

@@ -12,14 +12,14 @@ export const InternationalComparisonChart = () => {
   };
 
   return (
-    <Card className="p-6">
+    <Card className="p-6 overflow-hidden">
       <h3 className="text-lg font-semibold mb-2">Canada Lags Behind in Medical Graduate Production</h3>
       <p className="text-sm text-muted-foreground mb-6">
         Canada produces only 7.5 medical graduates per 100,000 population - nearly half the OECD average of 14.2
       </p>
-      <ChartContainer config={chartConfig} className="h-[300px]">
+      <ChartContainer config={chartConfig} className="h-[300px] w-full overflow-hidden">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={internationalComparisonData} margin={{ bottom: 20 }}>
+          <BarChart data={internationalComparisonData} margin={{ bottom: 20, left: 8, right: 8, top: 8 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="country" angle={-15} textAnchor="end" height={60} />
             <YAxis label={{ value: 'Graduates per 100,000 population', angle: -90, position: 'insideLeft' }} />
