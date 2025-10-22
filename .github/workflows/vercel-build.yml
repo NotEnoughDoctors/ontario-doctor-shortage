@@ -1,0 +1,40 @@
+name: Vercel Deployment on Push to Main from Dev
+
+on:
+  push:
+    branches:
+      - main
+    # You can specify the condition to check if the source is the dev branch
+    # This can be done by checking the commit messages or using a custom condition
+    # but the simplest approach is to look for changes coming from dev
+    # We can match the dev branch being merged to main
+    # GitHub doesn't natively track which branch initiated the push, so let's handle this manually
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository to get the source code
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Set up Node.js (required by Vercel)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Deploy to Vercel
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm install -g vercel
+          vercel --prod --confirm
