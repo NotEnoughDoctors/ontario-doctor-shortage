@@ -1,13 +1,10 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Navigation } from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
-
-const DoctorMapView = lazy(() => 
-  import("@/components/DoctorMapView").then(module => ({ default: module.DoctorMapView }))
-);
+import { DoctorMapView } from "@/components/DoctorMapView";
 
 interface Doctor {
   id: string;
@@ -27,10 +24,14 @@ interface Doctor {
 const DoctorMap = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mapReady, setMapReady] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
     fetchDoctors();
+    // Delay map rendering to ensure DOM is ready
+    const timer = setTimeout(() => setMapReady(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const fetchDoctors = async () => {
@@ -78,7 +79,7 @@ const DoctorMap = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {loading ? (
+            {loading || !mapReady ? (
               <Skeleton className="h-[600px] w-full" />
             ) : doctors.length === 0 ? (
               <div className="h-[600px] flex items-center justify-center border rounded-lg bg-muted/20">
@@ -90,9 +91,7 @@ const DoctorMap = () => {
                 </div>
               </div>
             ) : (
-              <Suspense fallback={<Skeleton className="h-[600px] w-full" />}>
-                <DoctorMapView doctors={doctors} />
-              </Suspense>
+              <DoctorMapView doctors={doctors} />
             )}
           </CardContent>
         </Card>
