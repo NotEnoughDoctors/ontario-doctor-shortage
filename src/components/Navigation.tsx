@@ -15,6 +15,7 @@ export const Navigation = () => {
     { path: "/", label: "Patient Access Crisis" },
     { path: "/physician-challenges", label: "Physician Workload" },
     { path: "/workforce-training", label: "Workforce Training" },
+    { path: "/doctor-map", label: "Doctor Map" },
   ];
 
   const getCurrentLabel = () => {

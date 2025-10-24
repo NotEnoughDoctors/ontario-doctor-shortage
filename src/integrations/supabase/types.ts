@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      doctors: {
+        Row: {
+          accepting_patients: boolean | null
+          address: string | null
+          city: string | null
+          cpso_number: string | null
+          created_at: string
+          first_name: string
+          id: string
+          last_name: string
+          latitude: number | null
+          longitude: number | null
+          phone: string | null
+          postal_code: string | null
+          specialty: string | null
+          updated_at: string
+        }
+        Insert: {
+          accepting_patients?: boolean | null
+          address?: string | null
+          city?: string | null
+          cpso_number?: string | null
+          created_at?: string
+          first_name: string
+          id?: string
+          last_name: string
+          latitude?: number | null
+          longitude?: number | null
+          phone?: string | null
+          postal_code?: string | null
+          specialty?: string | null
+          updated_at?: string
+        }
+        Update: {
+          accepting_patients?: boolean | null
+          address?: string | null
+          city?: string | null
+          cpso_number?: string | null
+          created_at?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          latitude?: number | null
+          longitude?: number | null
+          phone?: string | null
+          postal_code?: string | null
+          specialty?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
